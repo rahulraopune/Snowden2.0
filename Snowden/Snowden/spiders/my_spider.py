@@ -48,30 +48,40 @@ class CrawlPopularOpinionsSpider(scrapy.Spider):
     def extract_more_arguments(self, html_str, l_no, l_yes):
         """Extract the arguments after they are loaded."""
         pos_neg_atr_list = html_str.split('{ddo.split}')
-        self.separate_pros_cons(l_no, l_yes, pos_neg_atr_list)
+        self.extract_positive_args(l_yes, pos_neg_atr_list)
+        self.extract_negative_args(l_no, pos_neg_atr_list)
 
-    def separate_pros_cons(self, l_no, l_yes, pos_neg_atr_list):
+    def extract_negative_args(self, l_no, pos_neg_atr_list):
         """Separate the positive and negative arguments in the extra loaded arguments.
 
         Parameters
         ----------
         l_no
             List of negative arguments.
+        pos_neg_atr_list
+            The split JSON list after the sending request to 'Load more arguments' button.
+        """
+        neg_html = pos_neg_atr_list[1]
+        neg_selector = scrapy.Selector(text=neg_html)
+        neg_args = neg_selector.css('li').css('.hasData')
+        list_neg_li_tags = self.parse_title_body(neg_args)
+        l_no.extend(list_neg_li_tags)
+
+    def extract_positive_args(self, l_yes, pos_neg_atr_list):
+        """Separate the positive and negative arguments in the extra loaded arguments.
+
+        Parameters
+        ----------
         l_yes
             List of positive arguments.
         pos_neg_atr_list
             The split JSON list after the sending request to 'Load more arguments' button.
         """
         pos_html = pos_neg_atr_list[0]
-        neg_html = pos_neg_atr_list[1]
         pos_selector = scrapy.Selector(text=pos_html)
-        neg_selector = scrapy.Selector(text=neg_html)
         pos_args = pos_selector.css('li').css('.hasData')
-        neg_args = neg_selector.css('li').css('.hasData')
         list_pos_li_tags = self.parse_title_body(pos_args)
-        list_neg_li_tags = self.parse_title_body(neg_args)
         l_yes.extend(list_pos_li_tags)
-        l_no.extend(list_neg_li_tags)
 
     @staticmethod
     def call_more_arguments(page, response):
