@@ -37,29 +37,66 @@ class CrawlPopularOpinionsSpider(scrapy.Spider):
         if len(button) != 0:
             page = 2
             while page >= 2:
-                post_url = 'https://www.debate.org/opinions/~services/opinions.asmx/GetDebateArgumentPage'
-                headers = {'content-type': "application/json"}
-                debate_id = response.css('#yes-arguments li')[0].xpath('@did').extract()[0]
-                str_json = {'debateId': str(debate_id), 'pageNumber': page, 'itemsPerPage': 10, 'ysort': 5, 'nsort': 5}
-                post_body = json.dumps(str_json)
-                res = requests.request(method='POST', url=post_url, headers=headers, data=post_body)
-                html_str = json.loads(res.text)['d']
+                html_str = self.call_more_arguments(page, response)
                 if html_str == '{ddo.split}{ddo.split}finished':
                     break
-                pos_neg_atr_list = html_str.split('{ddo.split}')
-                pos_html = pos_neg_atr_list[0]
-                neg_html = pos_neg_atr_list[1]
-                pos_selector = scrapy.Selector(text=pos_html)
-                neg_selector = scrapy.Selector(text=neg_html)
-                pos_args = pos_selector.css('li').css('.hasData')
-                neg_args = neg_selector.css('li').css('.hasData')
-                list_pos_li_tags = self.parse_title_body(pos_args)
-                list_neg_li_tags = self.parse_title_body(neg_args)
-                l_yes.extend(list_pos_li_tags)
-                l_no.extend(list_neg_li_tags)
+                self.extract_more_arguments(html_str, l_no, l_yes)
                 page += 1
         json_dict = {"topic": topic, "category": category, "pro_arguments": l_yes, "con_arguments": l_no}
         yield json_dict
+
+    def extract_more_arguments(self, html_str, l_no, l_yes):
+        """Extract the arguments after they are loaded."""
+        pos_neg_atr_list = html_str.split('{ddo.split}')
+        self.separate_pros_cons(l_no, l_yes, pos_neg_atr_list)
+
+    def separate_pros_cons(self, l_no, l_yes, pos_neg_atr_list):
+        """Separate the positive and negative arguments in the extra loaded arguments.
+
+        Parameters
+        ----------
+        l_no
+            List of negative arguments.
+        l_yes
+            List of positive arguments.
+        pos_neg_atr_list
+            The split JSON list after the sending request to 'Load more arguments' button.
+        """
+        pos_html = pos_neg_atr_list[0]
+        neg_html = pos_neg_atr_list[1]
+        pos_selector = scrapy.Selector(text=pos_html)
+        neg_selector = scrapy.Selector(text=neg_html)
+        pos_args = pos_selector.css('li').css('.hasData')
+        neg_args = neg_selector.css('li').css('.hasData')
+        list_pos_li_tags = self.parse_title_body(pos_args)
+        list_neg_li_tags = self.parse_title_body(neg_args)
+        l_yes.extend(list_pos_li_tags)
+        l_no.extend(list_neg_li_tags)
+
+    @staticmethod
+    def call_more_arguments(page, response):
+        """Call 'Load more arguments' button if it is available.
+
+        Parameters
+        ----------
+        page
+            The current page number.
+        response
+            The response after calling the url page
+
+        Returns
+        -------
+        html_str
+            The JSON response string after calling the post url of the button.
+        """
+        post_url = 'https://www.debate.org/opinions/~services/opinions.asmx/GetDebateArgumentPage'
+        headers = {'content-type': "application/json"}
+        debate_id = response.css('#yes-arguments li')[0].xpath('@did').extract()[0]
+        str_json = {'debateId': str(debate_id), 'pageNumber': page, 'itemsPerPage': 10, 'ysort': 5, 'nsort': 5}
+        post_body = json.dumps(str_json)
+        res = requests.request(method='POST', url=post_url, headers=headers, data=post_body)
+        html_str = json.loads(res.text)['d']
+        return html_str
 
     @staticmethod
     def parse_title_body(args):
