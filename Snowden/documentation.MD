@@ -1,4 +1,4 @@
-# Computational Argumentation Assignemt No 1 
+# Computational Argumentation Assignment No 1 
 **Group : Snowden**
 
 **Members :**
@@ -11,21 +11,19 @@
 **File Structure** 
 ```bash
 ├── Snowden
-│   ├── output
-│   │   ├── Hist_per_argument_length.png
-│   │   ├── Num_arg_per_category.png
-│   │   ├── Num_arg_per_topic.png
 │   ├── spiders
 │   │   ├── _init_.py
 │   │   ├── my_spider.py
 │   ├── _init_.py
-│   ├── data.json
-│   ├── histogram_plot_ca.py
 │   ├── items.py
 │   ├── middlewares.py
 │   ├── pipelines.py
 │   ├── settings.py
+├── Bar_Graph_Num_arg_per_category.png
+├── Bar_Graph_Num_arg_per_topic.png
 ├── documentation
+├── Hist_per_argument_length.png
+├── plot.py
 ├── scrapy.cfg
 ```
 **Required Libraries**
@@ -35,21 +33,26 @@ Make sure you have python and pip tool installed in your system. Below is the co
     pip install scrapy
     pip install numpy
     pip install matplotlib
+    pip install requests
 
 
 
 **Execute below command to crawl the website**
 
-    scrapy crawl debate_crawler -o Snowden\data.json
+    scrapy crawl debate_crawler -o data.json
 
 **Execute below command to generate histogram**
 
-    python .\Snowden\Snowden\histogram_plot_ca.py
+    python plot.py
+
+**Implementation Strategy**
+
+    TO BE ADDED
+
 
 **Implementation Details**
 
 *  We use Scrapy framework for **data acquisation**. Scrapy is a fast high-level web crawling and web scraping framework that allows you crawl websites and extract structure data from web pages. 
-* You can create a new project using "*scrapy startproject Snowden*" 
 * The most import component here are the spiders where you specify the rules of how a certain site will be scraped, including how to perform the crawl and how to extract data from the it.
 * In our implementaion (<span style="color:red">*my_spider.py*</span>), we specify the website to be crawled in the function *start_request*. This function inturn calls a callback function *parse_main_url* using which we extract the top 5 populat opinions from the response.
 
