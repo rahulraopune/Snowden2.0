@@ -41,6 +41,9 @@ Make sure you have python and pip tool installed in your system. Below is the co
 
     scrapy crawl debate_crawler -o data.json
 
+* `data.json` file gets appended every time the above command is executed (if the file already exists). To avoid that, remove the already present file and then execute the command.
+
+ 
 **Execute below command to generate histogram**
 
     python plot.py
