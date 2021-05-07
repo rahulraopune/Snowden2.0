@@ -57,11 +57,11 @@ Make sure you have python and pip tool installed in your system. Below is the co
 * Since, scrapy doesn't provide response immediately, we had to switch to `requests` library which is an in-built
  libary in Python.
 * We're extracting the debate ID from one of the `li` tag in the first page and sending 
-```json
+```yaml
 {'debateId': str(debate_id), 'pageNumber': page, 'itemsPerPage': 10, 'ysort': 5, 'nsort': 5}
 ``` 
 as POST request body and 
-```json
+```yaml
 {'content-type': "application/json"}
 ``` 
 as headers as the API available provides JSON string as a response.
