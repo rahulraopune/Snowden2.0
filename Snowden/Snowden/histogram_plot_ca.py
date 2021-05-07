@@ -13,7 +13,8 @@ def plot_hist_per_arg_length(hist):
     plt.ylabel("Number of arguments")
     plt.xlabel("Length of arguments")
     plt.title("Histogram for length of arguments")
-    fig.savefig('Hist_per_argument_length.png', bbox_inches="tight", dpi=150)
+    fig.savefig('Snowden/Snowden/output/Hist_per_argument_length.png',
+                bbox_inches="tight", dpi=150)
 
 
 # Function to plot histogram per category and per topic
@@ -26,16 +27,18 @@ def plot_number_of_argument_graph(x, y, type_of_plot):
     if type_of_plot == 'Per Category':
         plt.xlabel("Category")
         plt.title("Histogram for length of arguments per category")
-        fig.savefig('Num_arg_per_category.png', bbox_inches="tight", dpi=150)
+        fig.savefig('Snowden/Snowden/output/Num_arg_per_category.png',
+                    bbox_inches="tight", dpi=150)
     elif type_of_plot == 'Per Topic':
         ax.set_xticklabels(x, rotation=90)
         plt.xlabel("Topic")
         plt.title("Histogram for length of arguments per topic")
-        fig.savefig('Num_arg_per_topic.png', bbox_inches="tight", dpi=150)
+        fig.savefig('Snowden/Snowden/output/Num_arg_per_topic.png',
+                    bbox_inches="tight", dpi=150)
 
 
 # Load contents of json file
-f = open('Snowden\data.json', 'r')
+f = open('Snowden\Snowden\data.json', 'r')
 json_data = json.load(f)
 # List for storing the length of each arguments to plot
 # the histogram per argument length
@@ -87,3 +90,5 @@ plot_number_of_argument_graph(
 # Plot histogram for the number of arguements per topic
 plot_number_of_argument_graph(
     hist_per_topic.keys(), hist_per_topic.values(), 'Per Topic')
+
+print('Output stored in path "Snowden/Snowden/output/"')
