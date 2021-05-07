@@ -22,13 +22,13 @@ def plot_number_of_argument_graph(x, y, z, type_of_plot):
     plt.ylabel("Number of arguments")
     if type_of_plot == 'Per Category':
         plt.xlabel("Category")
-        plt.title("Bar Graph for length of arguments per category")
+        plt.title("Bar Graph for number of arguments per category")
         plt.bar(x, y)
         fig.savefig('BarGraph_category.png', bbox_inches="tight", dpi=150)
     elif type_of_plot == 'Per Topic':
         ax.set_xticklabels(x, rotation=90)
         plt.xlabel("Topic")
-        plt.title("Bar Graph for length of arguments per topic")
+        plt.title("Bar Graph for number of arguments per topic")
         plt.bar(x, z, color='r')
         plt.bar(x, y, bottom=z, color='g')
         plt.legend(color_legend, loc=0)
