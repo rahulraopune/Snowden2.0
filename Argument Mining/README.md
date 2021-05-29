@@ -33,7 +33,7 @@ where, `text_id_x` is the unique identifier associated with each sentence and `l
 
 **Approach :**
 
-We choose combined features from POS Tag vectorizer and Tfidf vectorizer for our classification model. We choose those because the POS Tag features along with Tfidf which yielded good results (F1 Score). We trained our classification model with training data and later predicted with validation data (used cross validation for accuracy). We tried with several classification models such as knn, n-grams, random forest, SVM and many other models. Finally, we concluded with SVM as it is powerful and yielded good results on validation set i.e.,F1 Score of 0.54 with cross validation.  
+We choose combined features from POS Tag vectorizer and Tfidf vectorizer for our classification model. We choose those because the POS Tag features along with Tfidf yielded good results (F1 Score). We trained our classification model with training data and later predicted with validation data (used cross validation for accuracy). We tried with several classification models such as knn, n-grams, random forest, SVM and many other models. Finally, we concluded with SVM as it is powerful and yielded good results on validation set i.e.,F1 Score of 0.54 with cross validation.  
 
 **1. Features used in POS vectorizer :**
  
@@ -66,6 +66,9 @@ The Tfidf vectorizer will tokenize documents, learn the vocabulary and inverse d
 Support Vector Machines are considered to be a classification approach and, can be employed in both types of classification and regression problems. It can easily handle multiple continuous and categorical variables. SVM constructs a hyperplane in multidimensional space to separate different classes. SVM generates optimal hyperplane in an iterative manner, which is used to minimize an error. The core idea of SVM is to find a maximum marginal hyperplane(MMH) that best divides the dataset into classes.
 
 `sklearn` library has an in-built `SVMVectorizer` used to fit the model with input variable `x` and output variable `Y` in the training set. Later, we try to predict the validation set containing `x_test`. We write the predicted value i.e., `(0 / 1)` to the output `output.json` file.
+
+**Note :**
+No preprocessing of data was done in this approach
    
 
 
