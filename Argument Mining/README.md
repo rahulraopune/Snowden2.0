@@ -32,12 +32,16 @@ Once you install the required libraries using pip, you need to run the python fi
         . . .
       }`
      
-where, `text_id_x` is the unique identifier associated with each sentence and `label` is the predicted binary value by the SVM classifier can be `(0 / 1)`.
+where, `text_id_x` is the unique identifier associated with each sentence and `label` is the predicted binary value by the SVM classifier can be `0/1`. 
+
+**Note :**
+
+Keep the training and the test files in the same folder where `run_final.py` file is present.
   
 
 **Approach :**
 
-We choose combined features from Parts-of-Speech (POS), TAG vectorizer and TF-IDF vectorizer for our classification model. We used cross-validation on the training set to do model selection and tune the Hyper-parameters. We also tried the generation of feature vectors on every combination of POS, TAG, Tf-IDF, Spacy and Universal Sentence Encoder (with and without pre-processing and normalization). Then we performed cross-validation on several classification models such as KNN, Perceptron, Neural Networks, Logistic Regression, Random Forest, SVM and Decision Tree using every combination of the above mentioned feature vectors. Finally, we chose the POS and TAG features along with TF-IDF and concluded that taking SVM as a classifier model yielded good results on validation set i.e., F1 Score of 0.54
+We address the feature extraction at the token (word) level. We choose combined features from Parts-of-Speech (POS), TAG vectorizer, and TF-IDF vectorizer for our classification model. We used cross-validation on the training set to do model selection and tune the Hyper-parameters. We also tried the generation of feature vectors on every combination of POS, TAG, Tf-IDF, Spacy, and Universal Sentence Encoder (with and without pre-processing and normalization). Then we performed cross-validation on several classification models such as KNN, Perceptron, Neural Networks, Logistic Regression, Random Forest, SVM, and Decision Tree using every combination of the above-mentioned feature vectors. Finally, we chose the POS and TAG features along with TF-IDF and concluded that taking SVM as a classifier model yielded good results on the validation set i.e., F1 Score of 0.54
 
 **1. Features used in POS vectorizer :**
  
@@ -47,7 +51,7 @@ We choose combined features from Parts-of-Speech (POS), TAG vectorizer and TF-ID
                         'PROPN': 0}
 ```
 
-These are the parts-of-speech feature vectors generated for every sentence in the input file. Along with this, we also create the parsed tree / tag feature vectors for every sentence and later create Tfidf vectors.
+These are the parts-of-speech feature vectors generated for every sentence in the input file. We have POS because it is a syntactic feature.
 
 
 **2. Features used in Tag / Nodes of parsed tree vectorizer :**
@@ -61,24 +65,28 @@ These are the parts-of-speech feature vectors generated for every sentence in th
                         'NNP': 0}
 ```
 
-We use parse trees because they are constructed based on either the constituency relation of constituency grammars or the dependency relation of dependency grammars. 
+We use parse trees because they are constructed based on either the constituency relation of constituency grammars or the dependency relation of dependency grammars. We have used TAG because it is a semantic feature.
 
 
 **3. Creation of TF-IDF vectorizer :**
 
-The TF-IDF vectorizer will tokenize documents, learn the vocabulary and inverse document frequency weightings, and allows to encode new documents. It Transforms the text to feature vectors that can be used as input to estimator. In each vector, the numbers (weights) represent features TF-IDF score. We later send this to a classifier i.e., SVM for predicting the output `0/1`.
+We created TF-IDF feature vectors using `TfidfVectorizer` from `sklearn`. We built this feature vector on the whole text and then combined it with the POS+TAG feature vectors.
+We later send this to a classifier i.e., SVM for predicting the output `0/1`.
 
 
 **4. SVM classifier using `sklearn` python library :**
 
-SVM can easily handle multiple continuous and categorical variables. SVM constructs a hyperplane in multidimensional space to separate different classes. We use `kernel=rbf` and `C=10**8` because these were the `best_params_` which our cross-validation experiment results. `sklearn` library has an in-built `svm.SVC` used to fit the model with input variable `x` and output variable `Y` in the training set. Later, we try to predict the validation set containing `x_test`. We write the predicted value i.e., `0/1` to the output `output.json` file.
+SVM can easily handle multiple continuous and categorical variables. SVM constructs a hyperplane in multidimensional space to separate different classes.
+
+We chose the SVM model because of the following key features:
+- SVM has regularization parameters that avoid overfitting.
+- It is memory efficient.
+- It is defined by convex optimization which results in no local minima.
+
+We use `kernel=rbf` and `C=10**8` because these were the `best_params_` which our cross-validation experiment results. `sklearn` library has an in-built `svm.SVC` used to fit the model with input variable `x` and output variable `Y` in the training set. Later, we try to predict the validation set containing `x_test`. We write the predicted value i.e., `0/1` to the output `output.json` file.
 
 **Note :**
 
-No preprocessing of data was done in this approach because we chose POS as our features. 
-**to be changed**
-
-Doing pre-processing, we would have deleted words which would have been important for Parts-of-Speech feacture vectores.
-So if we used pre-processing, these words would have been removed from the sentences and will result in incorrect POS feature vector.
+No pre-processing was done in our implementation because we observed that with pre-processing (eg, removing stopwords/punctuation), words that are important in the context of POS feature vector like punctuation, conjunction (e.g., "and") were removed eventually giving us below-average performance. 
    
 
