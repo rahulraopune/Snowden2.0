@@ -46,9 +46,9 @@ We address the feature extraction at the token (word) level. We choose combined 
 **1. Features used in POS vectorizer :**
  
 ```python
-  pos_feature_dict = {'ADJ': 0, 'SPACE': 0, 'ADV': 0, 'INTJ': 0, 'SYM': 0, 'VERB': 0, 'SCONJ': 0, 'PART': 0, 'X': 0,
-                        'PUNCT': 0, 'AUX': 0, 'ADP': 0, 'NUM': 0, 'PRON': 0, 'NOUN': 0, 'DET': 0, 'CCONJ': 0,
-                        'PROPN': 0}
+pos_feature_dict = {'ADJ': 0, 'SPACE': 0, 'ADV': 0, 'INTJ': 0, 'SYM': 0, 'VERB': 0, 'SCONJ': 0, 'PART': 0, 'X': 0,
+                    'PUNCT': 0, 'AUX': 0, 'ADP': 0, 'NUM': 0, 'PRON': 0, 'NOUN': 0, 'DET': 0, 'CCONJ': 0,
+                    'PROPN': 0}
 ```
 
 These are the parts-of-speech feature vectors generated for every sentence in the input file. We have POS because it is a syntactic feature.
@@ -57,12 +57,12 @@ These are the parts-of-speech feature vectors generated for every sentence in th
 **2. Features used in Tag / Nodes of parsed tree vectorizer :**
 
 ```python
-  pos_feature_dict = {'VBP': 0, 'RBS': 0, 'VBZ': 0, 'WRB': 0, 'VB': 0, 'NNS': 0, 'WDT': 0, 'UH': 0, '-RRB-': 0,
-                        'AFX': 0, 'CC': 0, 'WP': 0, 'VBN': 0, 'IN': 0, 'PRP$': 0, 'XX': 0, 'WP$': 0, 'RBR': 0, 'PDT': 0,
-                        'HYPH': 0, 'POS': 0, '$': 0, 'NNPS': 0, 'MD': 0, '.': 0, 'VBD': 0, 'JJR': 0, 'NFP': 0, ',': 0,
-                        'JJS': 0, 'DT': 0, '_SP': 0, 'VBG': 0, 'FW': 0, 'RP': 0, 'SYM': 0, 'LS': 0, 'CD': 0, 'RB': 0,
-                        'EX': 0, '``': 0, 'PRP': 0, "''": 0, ':': 0, 'TO': 0, 'JJ': 0, 'ADD': 0, '-LRB-': 0, 'NN': 0,
-                        'NNP': 0}
+pos_feature_dict = {'VBP': 0, 'RBS': 0, 'VBZ': 0, 'WRB': 0, 'VB': 0, 'NNS': 0, 'WDT': 0, 'UH': 0, '-RRB-': 0,
+                    'AFX': 0, 'CC': 0, 'WP': 0, 'VBN': 0, 'IN': 0, 'PRP$': 0, 'XX': 0, 'WP$': 0, 'RBR': 0, 'PDT': 0,
+                    'HYPH': 0, 'POS': 0, '$': 0, 'NNPS': 0, 'MD': 0, '.': 0, 'VBD': 0, 'JJR': 0, 'NFP': 0, ',': 0,
+                    'JJS': 0, 'DT': 0, '_SP': 0, 'VBG': 0, 'FW': 0, 'RP': 0, 'SYM': 0, 'LS': 0, 'CD': 0, 'RB': 0,
+                    'EX': 0, '``': 0, 'PRP': 0, "''": 0, ':': 0, 'TO': 0, 'JJ': 0, 'ADD': 0, '-LRB-': 0, 'NN': 0,
+                    'NNP': 0}
 ```
 
 We use parse trees because they are constructed based on either the constituency relation of constituency grammars or the dependency relation of dependency grammars. We have used TAG because it is a semantic feature.
