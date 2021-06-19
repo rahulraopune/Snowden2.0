@@ -38,7 +38,7 @@ We used 5-fold cross-validation on the training set to do model selection and tu
 SVM is the classification model for this assignment.
 
 
-** SVM classifier**
+**SVM classifier**
 
 We chose the SVM model because of the following key features:
 - SVM has regularization parameters that avoid overfitting.
