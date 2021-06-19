@@ -35,11 +35,12 @@ After running the cell which calls the `write_file` function, `output.json` file
 We address the feature extraction at the token level.
 We have combined all the preceeding posts in a thread and used the following features:
 
-- **spacy word embeddings**
-- **total number of negative words** in the thread
+- **Spacy word embeddings**
+- **Total number of negative words** in the thread
 - The **controversiality** parameter 
 - Total number of **up votes** 
 - **violated_rule** 
+
 parameter of each post as features for our classification model.
 We used 5-fold cross-validation on the training set to do model selection and tune the Hyper-parameters.
 SVM is the classification model for this assignment.
