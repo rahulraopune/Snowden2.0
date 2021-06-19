@@ -35,13 +35,13 @@ After running the cell which calls the `write_file` function, `output.json` file
 We address the feature extraction at the token level.
 We have combined all the preceeding posts in a thread and used the following features:
 
-- **Spacy word embeddings**
-- **Total number of negative words** in the thread
+- **Spacy word embeddings** because they represent implicit relationships between words
+- **Total number of negative words** in the thread to identify ad-hominem in the next post.
 - The **controversiality** parameter 
 - Total number of **up votes** 
-- **violated_rule** 
+- **Parts of speech** vector because it is a syntactic feature.
+- **violated_rule** parameter of each post.
 
-parameter of each post as features for our classification model.
 We used 5-fold cross-validation on the training set to do model selection and tune the Hyper-parameters.
 SVM is the classification model for this assignment.
 
@@ -55,6 +55,6 @@ We chose the SVM model because of the following key features:
 
 **Note :**
 
-In our implementation, there was no pre-processing because it was observed that pre-processing (e.g. removing stopwords/punctuation) removed words that are important in the context of spacy word embeddings. 
+In our implementation, there was no pre-processing because it was observed that pre-processing (e.g. removing stopwords/punctuation) removed words that are important in the context of spacy word embeddings and Parts of speech feature vectors.
    
 
