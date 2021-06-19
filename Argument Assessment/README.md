@@ -47,6 +47,6 @@ We chose the SVM model because of the following key features:
 
 **Note :**
 
-No pre-processing was done in our implementation because we observed that with pre-processing (eg, removing stopwords/punctuation), words that are important in the context of spacy word embeddings were removed eventually giving us performance below baseline f1-score. 
+In our implementation, there was no pre-processing because it was observed that pre-processing (e.g. removing stopwords/punctuation) removed words that are important in the context of spacy word embeddings. 
    
 
