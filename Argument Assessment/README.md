@@ -58,4 +58,5 @@ We chose the SVM model because of the following key features:
 In our implementation, there was no pre-processing because it was observed that pre-processing (e.g. removing stopwords/punctuation) removed words that are important in the context of spacy word embeddings and Parts of speech feature vectors.
    
 **References**
-Bing Liu, Minqing Hu and Junsheng Cheng. "Opinion Observer: Analyzing and Comparing Opinions on the Web." Proceedings of the 14th International World Wide Web conference (WWW-2005), May 10-14, 2005, Chiba, Japan.
+
+[1] Bing Liu, Minqing Hu and Junsheng Cheng. "Opinion Observer: Analyzing and Comparing Opinions on the Web." Proceedings of the 14th International World Wide Web conference (WWW-2005), May 10-14, 2005, Chiba, Japan.
