@@ -25,7 +25,7 @@ Once you install the required libraries using pip, you can run the jupyter noteb
 
 **Note :**
 
-Keep the training and the test files in the same folder where `CA_Ex3_Argument_Assessment.ipynb` file is present. We are also submitting a negative keyword file, `neg_key_words.txt`, which contains all the negative keywords. We have used this file to check the number of negative words in the text to create features. Keep this file in the same folder with `.ipynb` file as well.
+Keep the training and the test files in the same folder where `CA_Ex3_Argument_Assessment.ipynb` file is present. We are also submitting a negative keyword file, `negative_words.txt`[1], which contains all the NEGATIVE opinion words (or sentiment words). We have used this file to check the number of negative words in the text to create features. Keep this file in the same folder with `.ipynb` file as well.
     
 After running the cell which calls the `write_file` function, `output.json` file will be generated.
   
@@ -57,4 +57,5 @@ We chose the SVM model because of the following key features:
 
 In our implementation, there was no pre-processing because it was observed that pre-processing (e.g. removing stopwords/punctuation) removed words that are important in the context of spacy word embeddings and Parts of speech feature vectors.
    
-
+**References**
+Bing Liu, Minqing Hu and Junsheng Cheng. "Opinion Observer: Analyzing and Comparing Opinions on the Web." Proceedings of the 14th International World Wide Web conference (WWW-2005), May 10-14, 2005, Chiba, Japan.
