@@ -39,7 +39,7 @@ The text input is converted into a real-valued vector. Word embeddings are compu
 
 **Step 3: Cosine similarity within the sentence**
 
-In LexRank word embeddings are used to calculate cosine similarity within sentences is used. It computes the average of all word embeddings within a sentence that are used to compare to other sentences. The formula for computing cosine-similarity is given by `Cos(x, y) = x . y / ||x|| * ||y||`.
+In LexRank word embeddings are used to calculate cosine similarity within sentences. It computes the average of all word embeddings of tokens within a sentence to calculate a vector representence of sentence which are then used to compare other sentences.
 
 **Step 4: Connectivity matrix**
 
