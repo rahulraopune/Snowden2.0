@@ -26,6 +26,42 @@ We use extractive text summarization approach to summarize the text. It is one o
 
 LexRank is an extractive text summarization technique. A sentence which is similar to various other sentences of the text has a high probability of being important. Approach of LexRank is that a specific sentence is recommended by other similar sentences and hence it's rank tends to be higher. Higher the rank, higher is the priority of being included in the summarized text.
 
+**Algorithm:**
+
+LexRank algorithm consists of 7 steps namely:
+
+**Step 1: Input to the model**
+
+Input to the LexRank model can be an argument or a set of arguments in string format.
+
+**Step 2: Word embeddings**
+
+We need to convert the text input into a real-valued vectors. Representation of words in the vector format is called word embeddings. Word embeddings are computed such that the words that are represented as similar vectors are expected to be similar in meaning.
+
+**Step 3: Intra-sentence cosine similarity**
+
+We use word embeddings in the sentence. However, in LexRank implementation an intra-sentence of sentence is used. It computes the average of all word embeddings within a sentence that are used to compare to other sentences. The formula for computing cosine-similarity is given by `Cos(x, y) = x . y / ||x|| * ||y||`.
+
+**Step 4: Adjacency matrix**
+
+An adjacency matrix is usually a binary matrix with just information whether the two vertices have an edge between them. 
+
+**Step 5: Connectivity matrix**
+
+A connectivity matrix is usually a list of which vertex numbers have an edge between them. LexRank adds a count of connections from other sentences. To count the number of connections, LexRank applies a threshold. For example, it only counts sentences as similar to itself where cosine similarity is more than 0.3 or 0.1.
+
+**Step 6: Eigenvector centrality**
+
+To find out the most important sentences LexRank utilizes eigenvector centrality. The method is called power iteration method. It involves 3 steps:
+**a)** In the first step each matrix row is multiplied by a 1.
+**b)** In the second step, we square rows results and take a root from the sum.
+**c)** We repeat the above steps until the normalized value does not change much between any iteration.
+
+**Step 7: Output of the model**
+
+Finally, we have the output i.e, the normalized value.
+
+
 Working mechanism of LexRank is as follows:
 
 **a)** We have to import `PlaintextParser` after generating pandas dataframe for the test_data. Here, we have an article stored as a string. Along with parser, we have to `import Tokenizer` for segmenting the raw text into tokens. We import the `LexRankSummarizer` available in `sumy.summarizers` to access the summaries of text/article.
