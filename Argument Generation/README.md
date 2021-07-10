@@ -59,15 +59,20 @@ To find out the most important sentences LexRank utilizes eigenvector centrality
 
 Depending on the size of the summary, the sentences are sorted in descending order of normalisation values and the sentences with higher vales are added to the text summmary.
 
-
 Working mechanism of LexRank is as follows:
 
-**a)** We have to import `PlaintextParser` after generating pandas dataframe for the test_data. Here, we have an article stored as a string. Along with parser, we have to `import Tokenizer` for segmenting the raw text into tokens. We import the `LexRankSummarizer` available in `sumy.summarizers` to access the summaries of text/article.
+**a)** We have to import `PlaintextParser` after generating pandas dataframe for the `test_data`. Along with parser, we have to `import Tokenizer` for segmenting the raw text into tokens. We import the `LexRankSummarizer` available in `sumy.summarizers` to access the conclusion of the arguments.
 
 **b)** Text source is in string format, so we need to use `PlainTextParser.from_string()` function to initialize the parser. We can specify the language used as an input to the Tokenizer. In our case, we use "English".
 
-**c)** Now, we have to create a summarization model `lex_rank_summarizer` to fit our text. Syntax is given by `lex_rank_summarizer(document, sentences_count)`. We set the parameter `sentence_count` to 1, as we need a one-line summary.
+**c)** Now, we have to create a summarization model `lex_rank_summarizer` to fit our text. Syntax is given by `lex_rank_summarizer(document, sentences_count)`. We set the parameter `sentence_count` to 1, as we need a one-line summary. In our experiments, the LexRank doesn't give conclusions to single sentence arguments, in those cass, we put the original argument as the conclusion. We also tried to preprocess the arguments but this did not give the desired results.
 
-**d)** We update the predicted entries of summaries to the `test_df['predicted']`. Later, we write the predicted summaries to the test_result_lex.json file.
+**d)** We update the predicted entries of summaries to the `test_df['predicted']`. 
+**e)** The last step involves evaluation in the form of a BLEU-1 and BLEU-2 scores using `eval.py`. In LexRank approach, we were able to achieve scores of `BLEU-1: 0.1523683483109674` and `BLEU-2: 0.030529159138909016`.
 
-**e)** The last step involves evaluation in the form of a BLEU-1 and BLEU-2 scores. In LexRank approach, we were able to achieve scores of `BLEU-1: 0.1523683483109674` and `BLEU-2: 0.030529159138909016`.
+**Execution Steps**
+- We are submitting `run_final.ipynb` file for execution.
+- Keep the validation and test files in the same folder as of `run_final.ipynb` file.
+- You can execute the full notebook either locally or on Google Colab.
+- Run all the cells in the Notebook. The output json is produced in the `test_result.json` file.
+- Run the `eval.py` script to check the BLEU scores.
