@@ -19,11 +19,11 @@ Run the first cell to install all the important library imports
 **1. Introduction to Extractive Text Summarization :**
 
 Text Summarization is a part of NLP involved in summarization of large texts without losing key aspects of text. Large texts are often found in news articles, tech blogs etc.
-We use extractive text summarization approach to summarize the text. It is one of the traditional approaches used in real world applications. The core concept is to identify the important sentences of the text and add them to the summary text. Summaries obtained contains exact sentences from the original text.
+We use extractive text summarization approach to generate conclusion of the argument. It is one of the traditional approaches used in real world applications. The core concept is to identify the important sentences of the text and add them to the summary text. Summaries obtained might contain exact sentences from the original text if the original text is less than two sentences.
 
 **2. LexRank :**
 
-LexRank is an unsupervised extractive text summarization technique. A sentence which is similar to various other sentences of the text has a high probability of being important. Approach of LexRank is that a specific sentence is recommended by other similar sentences and hence it's rank tends to be higher. Higher the rank, higher is the priority of being included in the summarized text.
+LexRank is an unsupervised extractive text summarization technique. If a sentence is similar to several other sentences in the text, then it has a high possibility of being significant. By using LexRank, a specific sentence is recommended by similar sentences and therefore is likely to have a higher ranking. In summarizing a text, the higher the rank, the more priority it has.
 
 **Algorithm:**
 
@@ -35,11 +35,11 @@ Input to the LexRank algorithm can be an argument or a set of arguments in strin
 
 **Step 2: Word embeddings**
 
-We need to convert the text input into a real-valued vectors. Word embeddings are computed such that the words that are represented as similar vectors are expected to be similar in meaning.
+The text input is converted into a real-valued vector. Word embeddings are computed such that the words that are represented as similar vectors are expected to be similar in meaning.
 
 **Step 3: Cosine similarity within the sentence**
 
-We use word embeddings in the sentence. However, in LexRank implementation an cosine similarity within a sentence is used. It computes the average of all word embeddings within a sentence that are used to compare to other sentences. The formula for computing cosine-similarity is given by `Cos(x, y) = x . y / ||x|| * ||y||`.
+In LexRank word embeddings are used to calculate cosine similarity within sentences is used. It computes the average of all word embeddings within a sentence that are used to compare to other sentences. The formula for computing cosine-similarity is given by `Cos(x, y) = x . y / ||x|| * ||y||`.
 
 **Step 4: Connectivity matrix**
 
