@@ -10,30 +10,8 @@
 
 **Required Libraries :**
 
-Make sure you have python and pip tool installed in your system. Following libraries in python are required to run the project.
-    
-    pip install numpy
-    pip install re
-    pip install nltk
-    nltk.download('stopwords')
-    nltk.download('punkt')
-    pip install heapq
-    pip install pandas
-    pip install tqdm
-    pip install json
-    pip install unicodedata
-    
-    # Installing and Importing sumy
-    !pip install sumy
-    !pip install transformers
-    !pip install SentencePiece 
-    
-    # Importing the parser and tokenizer
-    from sumy.parsers.plaintext import PlaintextParser
-    from sumy.nlp.tokenizers import Tokenizer
+Run the first cell to install all the important library imports ![image](https://user-images.githubusercontent.com/26580082/125167584-a0482900-e1a1-11eb-8946-de77a97e0879.png)
 
-    # Import the LexRank summarizer
-    from sumy.summarizers.lex_rank import LexRankSummarizer
     
 **Approach**
 
