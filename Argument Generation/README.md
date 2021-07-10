@@ -53,8 +53,11 @@ A connectivity matrix is usually a list of which vertex numbers have an edge bet
 **Step 6: Eigenvector centrality**
 
 To find out the most important sentences LexRank utilizes eigenvector centrality. The method is called power iteration method. It involves 3 steps:
+
 **a)** In the first step each matrix row is multiplied by a 1.
+
 **b)** In the second step, we square rows results and take a root from the sum.
+
 **c)** We repeat the above steps until the normalized value does not change much between any iteration.
 
 **Step 7: Output of the model**
