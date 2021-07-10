@@ -76,3 +76,7 @@ Working mechanism of LexRank is as follows:
 - You can execute the full notebook locally.
 - Run all the cells in the Notebook. The output json is produced in the `test_result.json` file.
 - Run the `eval.py` script to check the BLEU scores.
+
+**Note :**
+
+we tried training encoder decoder NN but it didn't gave the desired results and took 18 hrs to train even after tuning parameters and also we did experiments with abstractive approaches like BART, XML, GPT-2 etc but it takes more than 8 hrs to predict and was not giving good results.
