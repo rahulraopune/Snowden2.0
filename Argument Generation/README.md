@@ -12,7 +12,7 @@
 
 Run the first cell to install all the important library imports
 
-![image](https://user-images.githubusercontent.com/26580082/125168914-19e31580-e1a8-11eb-8d2e-687c599133b7.png)
+![image](https://user-images.githubusercontent.com/26580082/125171353-1786b880-e1b4-11eb-8bf4-b72f6970aa89.png)
     
 **Approach**
 
@@ -73,6 +73,6 @@ Working mechanism of LexRank is as follows:
 **Execution Steps**
 - We are submitting `run_final.ipynb` file for execution.
 - Keep the validation and test files in the same folder as of `run_final.ipynb` file.
-- You can execute the full notebook either locally or on Google Colab.
+- You can execute the full notebook locally.
 - Run all the cells in the Notebook. The output json is produced in the `test_result.json` file.
 - Run the `eval.py` script to check the BLEU scores.
