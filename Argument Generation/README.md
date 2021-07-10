@@ -23,7 +23,7 @@ We use extractive text summarization approach to summarize the text. It is one o
 
 **2. LexRank :**
 
-LexRank is an extractive text summarization technique. A sentence which is similar to various other sentences of the text has a high probability of being important. Approach of LexRank is that a specific sentence is recommended by other similar sentences and hence it's rank tends to be higher. Higher the rank, higher is the priority of being included in the summarized text.
+LexRank is an unsupervised extractive text summarization technique. A sentence which is similar to various other sentences of the text has a high probability of being important. Approach of LexRank is that a specific sentence is recommended by other similar sentences and hence it's rank tends to be higher. Higher the rank, higher is the priority of being included in the summarized text.
 
 **Algorithm:**
 
