@@ -43,21 +43,21 @@ We use word embeddings in the sentence. However, in LexRank implementation an co
 
 **Step 4: Connectivity matrix**
 
-A connectivity matrix is usually a list of which vertex numbers have an edge between them. LexRank adds a count of connections from other sentences. To count the number of connections, LexRank applies a threshold. For example, it only counts sentences as similar to itself where cosine similarity is more than 0.3 or 0.1.
+A connectivity matrix is usually a list of which vertex numbers have an edge between them. LexRank adds a count of connections from other sentences. To count the number of connections, LexRank applies a threshold. If the similarity is greater than threshold, the entry in the connectivity matrix is 1 else 0.
 
 **Step 5: Eigenvector centrality**
 
-To find out the most important sentences LexRank utilizes eigenvector centrality. The method is called power iteration method. It involves 3 steps:
+To find out the most important sentences LexRank utilizes eigenvector centrality. Power iteration method is used. It involves 3 steps:
 
-**a)** In the first step each matrix row is multiplied by a 1.
+**a)** Intially, entire matrix rows are  multiplied by 1.
 
-**b)** In the second step, we square rows results and take a root from the sum.
+**b)** Next, we square the row results and take a root from the sum.
 
-**c)** We repeat the above steps until the normalized value does not change much between any iteration.
+**c)** The above steps are repeated until the normalized value does not change much between any iteration.
 
 **Step 6: Output of the model**
 
-Finally, we have the output i.e, the normalized value.
+The normalized value will be the output to LexRank algorithm.
 
 
 Working mechanism of LexRank is as follows:
