@@ -12,8 +12,7 @@
 
 Run the first cell to install all the important library imports
 
-![image](https://user-images.githubusercontent.com/26580082/125167584-a0482900-e1a1-11eb-8946-de77a97e0879.png)
-
+![image](https://user-images.githubusercontent.com/26580082/125168914-19e31580-e1a8-11eb-8d2e-687c599133b7.png)
     
 **Approach**
 
