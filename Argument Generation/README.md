@@ -57,7 +57,7 @@ To find out the most important sentences LexRank utilizes eigenvector centrality
 
 **Step 6: Output of the model**
 
-The normalized value will be the output to LexRank algorithm.
+Depending on the size of the summary, the sentences are sorted in descending order of normalisation values and the sentences with higher vales are added to the text summmary.
 
 
 Working mechanism of LexRank is as follows:
