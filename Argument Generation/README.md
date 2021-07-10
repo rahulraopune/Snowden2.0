@@ -28,29 +28,25 @@ LexRank is an extractive text summarization technique. A sentence which is simil
 
 **Algorithm:**
 
-LexRank algorithm consists of 7 steps namely:
+LexRank algorithm consists of 6 steps namely:
 
-**Step 1: Input to the model**
+**Step 1: Input to the algorithm**
 
-Input to the LexRank model can be an argument or a set of arguments in string format.
+Input to the LexRank algorithm can be an argument or a set of arguments in string format.
 
 **Step 2: Word embeddings**
 
-We need to convert the text input into a real-valued vectors. Representation of words in the vector format is called word embeddings. Word embeddings are computed such that the words that are represented as similar vectors are expected to be similar in meaning.
+We need to convert the text input into a real-valued vectors. Word embeddings are computed such that the words that are represented as similar vectors are expected to be similar in meaning.
 
-**Step 3: Intra-sentence cosine similarity**
+**Step 3: Cosine similarity within the sentence**
 
-We use word embeddings in the sentence. However, in LexRank implementation an intra-sentence of sentence is used. It computes the average of all word embeddings within a sentence that are used to compare to other sentences. The formula for computing cosine-similarity is given by `Cos(x, y) = x . y / ||x|| * ||y||`.
+We use word embeddings in the sentence. However, in LexRank implementation an cosine similarity within a sentence is used. It computes the average of all word embeddings within a sentence that are used to compare to other sentences. The formula for computing cosine-similarity is given by `Cos(x, y) = x . y / ||x|| * ||y||`.
 
-**Step 4: Adjacency matrix**
-
-An adjacency matrix is usually a binary matrix with just information whether the two vertices have an edge between them. 
-
-**Step 5: Connectivity matrix**
+**Step 4: Connectivity matrix**
 
 A connectivity matrix is usually a list of which vertex numbers have an edge between them. LexRank adds a count of connections from other sentences. To count the number of connections, LexRank applies a threshold. For example, it only counts sentences as similar to itself where cosine similarity is more than 0.3 or 0.1.
 
-**Step 6: Eigenvector centrality**
+**Step 5: Eigenvector centrality**
 
 To find out the most important sentences LexRank utilizes eigenvector centrality. The method is called power iteration method. It involves 3 steps:
 
@@ -60,7 +56,7 @@ To find out the most important sentences LexRank utilizes eigenvector centrality
 
 **c)** We repeat the above steps until the normalized value does not change much between any iteration.
 
-**Step 7: Output of the model**
+**Step 6: Output of the model**
 
 Finally, we have the output i.e, the normalized value.
 
