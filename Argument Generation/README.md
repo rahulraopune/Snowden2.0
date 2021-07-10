@@ -10,7 +10,9 @@
 
 **Required Libraries :**
 
-Run the first cell to install all the important library imports ![image](https://user-images.githubusercontent.com/26580082/125167584-a0482900-e1a1-11eb-8946-de77a97e0879.png)
+Run the first cell to install all the important library imports
+
+![image](https://user-images.githubusercontent.com/26580082/125167584-a0482900-e1a1-11eb-8946-de77a97e0879.png)
 
     
 **Approach**
